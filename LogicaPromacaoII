@@ -1,0 +1,14 @@
+<canvas id="tela" width="600" height="400"></canvas>
+
+<script>
+   var tela = document.getElementById("tela");
+
+    //utilizar plano cartesiano x,y
+    var c = tela.getContext("2d");
+
+    //preencher com a cor verde
+    c.fillStyle = "green";
+
+    //desenha retângulo
+    c.fillRect(0,0,200,400);
+</script>
