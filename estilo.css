@@ -1,0 +1,92 @@
+body{
+   background-color:#F5F0DC;
+   font-family:Helvetica, Arial, sans-serif;
+   width:940px;
+   margin-right:auto;
+   margin-left:auto;
+}
+
+
+nav{
+   float:left;
+   width: 200px;
+}
+
+nav ul{
+    list-style:none;
+    padding-left:0;
+}
+
+nav ul li{
+   background: #C7BE9B;
+   padding:3px;
+   margin-bottom:5px;
+
+}
+
+nav ul li a{
+    color:black;
+    text-decoration: none;
+}
+
+nav ul li:hover {
+    background-color: #9C8F67;
+}
+
+h2{
+   background-color: #B3A742;
+   background:-webkit-linear-gradient(top,#9C8F67,#C7BE9B);
+   border-radius: 15px;
+   border: 1px solid black;
+   padding: 5px;
+   color: #FFFFFF;
+}
+
+#titulo{
+   text-align:center;
+}
+
+figure{
+   background-color:white;
+   width:450px;
+   text-align:center;
+   padding:15px;
+   font-family:'Comic Sans MS',cursive;
+   border:1px solid black;
+   box-shadow: 5px 5px 3px rgba(0,0,0,0.7);
+   -webkit-transform:rotate(-5deg);
+}
+
+#tb-nutrientes{
+    border: 1px solid black;
+    width: 40%;
+    margin: auto;
+}
+
+#tb-nutrientes th{
+    background-color: #F8EA6B;
+}
+
+#tb-nutrientes tr:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+#tb-nutrientes tr:nth-child(even){
+    background-color: #F8EAB3;
+}
+
+
+figure:hover{
+    -webkit-transform:rotate(-5deg);
+}
+
+#conteudo{
+   float: right;
+   width: 740px;
+}
+
+#banner {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
