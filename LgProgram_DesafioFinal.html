@@ -1,0 +1,130 @@
+<input type="text" id="numero" value=0 />
+<input type="submit" value="Informe um número para a Mega-Senha!"
+                    id="verificar"/>
+
+<script>
+
+   /*
+      Desafio Final Curso
+      Sortear 6 números de 1 a 60 e armazenar num array
+      Entrarcom 6 números e verificar quantos foram os acertos
+      Informar a probabilidade de acertos
+   */
+
+   var mostra = function(frase) {
+      document.write(frase + "<br/>");
+   }
+
+   var linhaHR = function() {
+      document.write("<hr>");
+   }
+
+   var numSorteado = []; //Armazena número sorteados
+   var numInformado = [];  //Armazena números informados pelo usuário
+   var numAcertado = [];   //Armazena números que o usuário acertou
+   var limite = 6;
+
+   //Gerar números aleatórios
+   for(var i = 0; i<6;i++){
+      while(true){
+         var numAleatorio = Math.round(parseInt((Math.random()*60)+1));
+         if(numSorteado[i] != numAleatorio){
+            break;
+         }
+      }
+      numSorteado.push(numAleatorio);
+   }
+
+   //Validar numero digitado
+   var validaNumero = function(){
+      var retorno = true;
+      if((parseInt(numDigitado.value) < 1) || (parseInt(numDigitado.value) > 60) ){
+         retorno = false;
+      }
+      return retorno;
+   }
+
+   // adiciona número informado
+   var adicionaNumero = function(){
+       if(validaNumero() == false){
+          alert("Favor informar um número válido entre 1 e 60!");
+          return;
+       } 
+       var achou = false;
+       if(numInformado.length == limite){
+          alert("Você já informou o limite máximo de números");
+          return;
+       }
+       for(var i = 0;i < numInformado.length;i++){
+          if(numInformado[i] == numDigitado.value){
+             achou = true;
+          }
+       }
+       if(achou != true){
+          numInformado.push(numDigitado.value);
+       } else{
+          alert("Você já informou o número: " + numDigitado.value);
+       }
+       numDigitado.value = 0;
+       if(numInformado.length == limite){
+          confereSorteio();
+       }
+       return;
+   }
+
+   // Confere número digitado com números sorteados
+   var confereSorteio = function(){
+      for(var i = 0; i < numInformado.length; i++){
+         for(var j= 0; j < numSorteado.length; j++){
+            if(numSorteado[j] == numInformado[i]){
+               numAcertado.push(numInformado[i]);
+               break;
+            }
+         }
+      }
+      
+      var resultado = "Número(s) Sorteados: ";
+      var escolhido = "Número(s) escolhidos: ";
+      var acerto = "Numero(s) acertados: ";
+      
+      for(var i=0;i<numSorteado.length;i++){
+         resultado = resultado + numSorteado[i] + " ";
+      }
+
+      for(var i=0;i<numInformado.length;i++){
+         escolhido = escolhido + numInformado[i] + " ";
+      }
+
+      for(var i=0;i<numAcertado.length;i++){
+         acerto = acerto + numAcertado[i] + " ";
+      }
+
+      mostra(resultado);
+      mostra(escolhido);
+      mostra(acerto);
+
+      linhaHR();
+
+      if(numAcertado.length > 0){
+        mostra("Sim é a Loteria certinha dessa vez!");
+        mostra("<strong>Parabéns, você acertou " + numAcertado.length + " número(s) do Sorteio!</strong>");
+      } else{
+        mostra("<strong>Infelizmente você não acertou nenhum dos números, sorte na próxima!</strong>");
+      }
+
+      linhaHR(); 
+
+      //Calcular percentual de chances
+      var chances = 1;
+      for(var i = 1; i <= 60; i++ ){
+         chances = Math.round(chances * i);
+      }     
+      mostra("<strong />Você tem: " + Math.round((chances/(6*5*4*3*2*1))) + " probabilidade de acertar os " + limite + " número(s)!" );
+      return;
+   }
+
+   var numDigitado = document.getElementById("numero");
+   var botaoClicado = document.getElementById("verificar");
+   botaoClicado.onclick = adicionaNumero;
+
+</script>
